@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Sâmy, a Minha Princesa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Merriweather:wght@400;700&family=Dancing+Script:wght@400;700&family=Inter:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/128/7015/7015988.png">
+
+
+    
+    <style>
+        /* --- Variáveis de Cor (Baseado no seu CSS e nas fotos) --- */
+        :root {
+            --sunflower-yellow: #FDD835;  /* Amarelo Girassol (botões) */
+            --sunflower-orange: #FF9800;  /* Laranja (detalhes, fundos) */
+            --sunflower-light: #FFE082;   /* Amarelo claro */
+            --sunflower-cream: #FFF9E6;   /* Fundo creme (principal) */
+            --sunflower-brown: #5D4037;   /* Marrom escuro (textos) */
+            --sunflower-green: #7CB342;   /* Verde (botão secundário) */
+            --card-border: #E0E0E0;       /* Borda sutil do card */
+            --card-shadow: rgba(0, 0, 0, 0.08);
+            --text-serif: 'Merriweather', serif;
+            --title-serif: 'Playfair Display', serif;
+            --script-main: 'Dancing Script', cursive; /* Fonte principal para títulos 'script' */
+            --font-sans: 'Inter', sans-serif; /* (NOVA) Fonte para números */
+        }
+
+        /* --- Reset Básico --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--text-serif); /* Fonte principal de parágrafos */
+            background-color: var(--sunflower-cream);
+            color: var(--sunflower-brown);
+            line-height: 1.7;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+
+        /* --- Animações --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Elementos de Layout --- */
+        section {
+            padding: 80px 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2.section-title {
+            font-family: var(--title-serif);
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            color: var(--sunflower-brown);
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        /* --- Decorações (Girassóis) --- */
+        .sunflower-decoration {
+            position: absolute;
+            opacity: 0.3;
+            animation: spin 30s linear infinite;
+            z-index: 1;
+        }
+        .sunflower-top-left {
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            height: 120px;
+        }
+        .sunflower-bottom-right {
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            height: 150px;
+        }
+        .sunflower-decoration img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* --- 1. Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--sunflower-light) 0%, white 50%, var(--sunflower-cream) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+            max-width: 100vw; /* Garante que não ultrapasse a tela */
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: var(--script-main); /* Fonte "Para Sâmy," */
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--sunflower-brown);
+            margin-bottom: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero h2 {
+            font-family: var(--script-main); /* Fonte "Minha Neném" (alterado para Dancing Script) */
+            font-size: clamp(2.5rem, 8vw, 5rem); /* Ajuste de tamanho para Dancing Script */
+            color: var(--sunflower-orange);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-top: 0px; /* Ajuste na proximidade */
+        }
+
+        .hero p {
+            font-family: var(--text-serif);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--sunflower-brown);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 0.9rem; /* Texto do botão um pouco menor */
+            font-weight: bold;
+            font-family: var(--font-sans); /* MUDADO para Inter */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--sunflower-yellow);
+            color: var(--sunflower-brown);
+        }
+        .btn-primary:hover {
+            background-color: var(--sunflower-brown);
+            color: var(--sunflower-yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background-color: var(--sunflower-green);
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #558B2F;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* --- 2. Seção Contadores (Nossos Marcos) --- */
+        .counters-section {
+            background-color: var(--sunflower-cream);
+        }
+
+        .counters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .counter-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            border: 2px solid var(--sunflower-yellow);
+        }
+        /* Borda diferente para o segundo card, como na foto */
+        .counter-card.sim-card {
+            border: 2px solid #FFB6C1; /* Rosa claro */
+        }
+
+        .counter-card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            /* NOTA: Substitua este placeholder pela sua imagem de girassol
+              Ex: <img src="assets/sunflowers/sunflower_icon.png" alt="Girassol"> 
+            */
+        }
+        .counter-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+        .counter-card h3 {
+            font-family: var(--title-serif);
+            font-size: 1.6rem;
+            color: var(--sunflower-brown);
+            margin-bottom: 10px;
+        }
+
+        .counter-card .date-label {
+            font-family: var(--text-serif);
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .timer-box {
+            background-color: #FFFDF8;
+            padding: 15px 10px;
+            border-radius: 10px;
+            border: 1px solid #F0F0F0;
+        }
+
+        /* --- ALTERAÇÃO DE FONTE (GOAL 2) --- */
+        .timer-value {
+            font-family: var(--font-sans); /* MUDADO de --title-serif */
+            font-size: 2rem;
+            font-weight: 900; /* MUDADO de 700 */
+            color: var(--sunflower-orange);
+            display: block;
+        }
+
+        .timer-label {
+            font-family: var(--text-serif);
+            font-size: 0.8rem;
+            color: var(--sunflower-brown);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- 3. Seção "Motivos" --- */
+        .motivos-section {
+            background-color: var(--sunflower-cream);
+        }
+
+        .motivos-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            border: 2px solid var(--sunflower-brown);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .motivos-card h3 {
+            font-family: var(--title-serif);
+            font-size: 1.8rem;
+            color: var(--sunflower-brown);
+            margin-bottom: 15px;
+        }
+
+        .motivo-text {
+            font-family: var(--text-serif);
+            font-size: 1.2rem;
+            color: var(--sunflower-brown);
+            min-height: 80px; /* Espaço para o texto aparecer */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .btn-motivo {
+            padding: 15px 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            font-family: var(--font-sans); /* MUDADO para Inter */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: var(--sunflower-yellow);
+            color: var(--sunflower-brown);
+            margin-top: 20px;
+        }
+        .btn-motivo:hover {
+            background-color: var(--sunflower-brown);
+            color: var(--sunflower-yellow);
+            transform: translateY(-3px);
+        }
+
+        /* --- 4. Seção de Vídeo --- */
+        .video-section {
+            /* Fundo gradiente laranja como na foto */
+            background: linear-gradient(135deg, var(--sunflower-orange) 0%, var(--sunflower-yellow) 100%);
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            max-width: 100vw;
+        }
+
+        .video-section h2.section-title {
+            color: white; /* Texto branco no fundo laranja */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .video-section p {
+            font-family: var(--text-serif);
+            font-size: 1.1rem;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 20px; /* Bordas mais arredondadas */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 4px solid white;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #222;
+        }
+
+        /* --- 5. Seção Símbolo & Chama (Nova) --- */
+        .simbolo-chama-section {
+            background-color: var(--sunflower-cream);
+        }
+        .simbolo-chama-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: flex-start; /* Alinha os cards no topo */
+        }
+        .simbolo-card, .chama-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            border: 1px solid var(--card-border);
+        }
+        .simbolo-card h3, .chama-card h3 {
+            font-family: var(--title-serif);
+            font-size: 1.8rem;
+            color: var(--sunflower-brown);
+            margin-bottom: 20px;
+        }
+        .simbolo-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .simbolo-images img, .chama-card img {
+            width: 100%;
+            border-radius: 10px;
+            background-color: #f0f0f0; /* Fundo para placeholders */
+        }
+        .chama-card p {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* --- 6. Galeria --- */
+        .gallery-section {
+            background-color: var(--sunflower-cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            /* Grid mais dinâmico e responsivo */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--card-shadow);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1 / 1; /* Garante fotos quadradas */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* --- 7. Mensagem Final (Substitui Modal) --- */
+        .final-message-section {
+            background-color: var(--sunflower-cream);
+            /* ESTA É A SEÇÃO QUE O BOTÃO NÃO MAIS ACESSA */
+        }
+
+        .message-box {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 4px solid var(--sunflower-yellow);
+            box-shadow: 0 10px 30px var(--card-shadow);
+            position: relative;
+        }
+
+        .message-icon {
+            font-size: 2.5rem;
+            color: #FFB6C1; /* Rosa claro */
+            margin-bottom: 20px;
+        }
+
+        .message-box p {
+            font-family: var(--text-serif);
+            font-size: 1.15rem;
+            color: var(--sunflower-brown);
+            margin-bottom: 25px;
+            line-height: 1.9;
+        }
+        .message-box p.emphasis {
+            font-style: italic;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--sunflower-brown);
+        }
+
+        .message-signature {
+            font-family: var(--script-main);
+            font-size: 2.5rem;
+            color: var(--sunflower-orange);
+            margin-top: 30px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--sunflower-brown);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 30px 20px;
+            font-family: var(--text-serif);
+            font-size: 0.9rem;
+            max-width: 100vw;
+        }
+        footer p {
+            letter-spacing: 0.5px;
+        }
+
+        /* --- (NOVO) CSS DO MODAL DA CARTA (GOAL 3) --- */
+        .modal {
+            display: none; /* Começa escondido */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+            
+            /* Para centralizar o conteúdo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* Animação de fade-in */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #EADCA9; /* Cor de papel envelhecido da foto */
+            color: var(--sunflower-brown);
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%; /* Responsivo */
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            animation: fadeInUp 0.4s ease-out; /* Reutiliza animação */
+            max-height: 80vh; /* Altura máxima */
+            overflow-y: auto; /* Permite scroll se for muito longo */
+        }
+
+        .modal-content h3 {
+            font-family: var(--script-main);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-content p {
+            font-family: var(--text-serif);
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: left; /* Alinhado à esquerda como na carta */
+            margin-bottom: 20px;
+        }
+
+        .modal-content .signature {
+            font-family: var(--script-main);
+            font-size: 2.2rem;
+            text-align: left;
+            margin-top: 25px;
+        }
+
+        .modal-btn-close {
+            /* Estilo do botão "FECHAR" da imagem */
+            background-color: var(--sunflower-yellow);
+            color: var(--sunflower-brown);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: none;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: all 0.3s ease;
+        }
+        .modal-btn-close:hover {
+            background-color: var(--sunflower-brown);
+            color: var(--sunflower-yellow);
+            transform: translateY(-2px);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--sunflower-brown);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-btn:hover {
+            color: #795548;
+        }
+
+
+        /* --- Responsividade (GOAL 1: AJUSTES) --- */
+        @media (max-width: 768px) {
+            section {
+                /* AUMENTADO padding para mais respiro */
+                padding: 60px 20px; 
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+                width: 90%;
+                margin: 40px auto 0;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .simbolo-chama-grid {
+                grid-template-columns: 1fr; /* Coluna única em mobile */
+            }
+
+            .simbolo-images {
+                grid-template-columns: 1fr 1fr; /* Mantém 2 colunas para as imagens pequenas */
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .sunflower-top-left { width: 60px; height: 60px; }
+            .sunflower-bottom-right { width: 80px; height: 80px; }
+        }
+
+        @media (max-width: 480px) {
+            /* --- (NOVO) Ajustes finos de padding para telas pequenas --- */
+            section {
+                padding: 50px 20px; /* Garante 20px nas laterais */
+            }
+            .motivos-card {
+                padding: 30px 20px;
+            }
+            .counter-card {
+                padding: 25px 20px;
+            }
+            .simbolo-card, .chama-card {
+                padding: 25px 20px;
+            }
+            /* --- Fim dos ajustes finos --- */
+
+
+            .timer-grid {
+                grid-template-columns: 1fr 1fr; /* 2x2 em telas muito pequenas */
+                gap: 10px;
+            }
+            .timer-value {
+                font-size: 1.8rem;
+            }
+            .timer-label {
+                font-size: 0.7rem;
+            }
+
+            .gallery-grid {
+                /* Coluna única para a galeria em telas pequenas */
+                grid-template-columns: 1fr;
+            }
+            .gallery-item {
+                aspect-ratio: 1.2 / 1; /* Retângulo leve */
+            }
+
+            .message-box {
+                padding: 30px 20px;
+            }
+            
+            .modal-content {
+                width: 95%; /* Quase 100% no mobile */
+                padding: 25px 15px;
+            }
+            .modal-content h3 {
+                font-size: 1.8rem;
+            }
+            .modal-content p {
+                font-size: 0.95rem;
+            }
+            .modal-content .signature {
+                font-size: 2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero" id="hero">
+        <div class="sunflower-decoration sunflower-top-left">
+            <img src="assets/sunflowers/sunflower_3.png" alt="Girassol">
+        </div>
+        <div class="sunflower-decoration sunflower-bottom-right">
+            <img src="assets/sunflowers/sunflower_3.png" alt="Girassol">
+        </div>
+        
+        <div class="hero-content">
+            <h1>Para Sâmy,</h1>
+            <h2>Minha Neném</h2>
+            <p>Meu amor, quis criar algo que fosse só nosso. Um lugarzinho que guardasse a luz que você guia para a minha vida. Você é meu girassol.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="open-letter-btn">LER MINHA CARTA</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('counters').scrollIntoView()">NOSSOS MARCOS</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="counters-section" id="counters">
+        <h2 class="section-title">Nossos Marcos</h2>
+        <div class="counters-grid">
+            
+            <div class="counter-card">
+                <div class="counter-card-icon">
+                    <img src="assets/sunflowers/sunflower_transparent_2.png" alt="Girassol">
+                </div>
+                <h3>Construindo nossa história há...</h3>
+                <p class="date-label">(Desde 14 de Junho de 2025)</p>
+                <div class="timer-grid" id="timer1">
+                    <div class="timer-box"><span class="timer-value" data-unit="days">0</span><span class="timer-label">Dias</span></div>
+                    <div class="timer-box"><span class="timer-value" data-unit="hours">0</span><span class="timer-label">Horas</span></div>
+                    <div class="timer-box"><span class="timer-value" data-unit="mins">0</span><span class="timer-label">Min</span></div>
+                    <div class="timer-box"><span class="timer-value" data-unit="secs">0</span><span class="timer-label">Seg</span></div>
+                </div>
+            </div>
+
+            <div class="counter-card sim-card">
+                <div class="counter-card-icon">
+                    <img src="assets/sunflowers/sunflower_transparent_2.png" alt="Girassol">
+                </div>
+                <h3>Nosso "Sim" oficial há...</h3>
+                <p class="date-label">(Desde 16 de Agosto de 2025)</p>
+                <div class="timer-grid" id="timer2">
+                    <div class="timer-box"><span class="timer-value" data-unit="days">0</span><span class="timer-label">Dias</span></div>
+                    <div class="timer-box"><span class="timer-value" data-unit="hours">0</span><span class="timer-label">Horas</span></div>
+                    <div class="timer-box"><span class="timer-value" data-unit="mins">0</span><span class="timer-label">Min</span></div>
+                    <div class="timer-box"><span class="timer-value" data-unit="secs">0</span><span class="timer-label">Seg</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="motivos-section" id="motivos">
+        <div class="motivos-card">
+            <h3>Um dos infinitos motivos...</h3>
+            <div class="motivo-text" id="motivo-text-container">
+                ... pelos quais eu a amo:
+            </div>
+            <button class="btn-motivo" id="motivo-button">Me mostre um motivo</button>
+        </div>
+    </section>
+
+    <section class="video-section" id="video">
+        <div class="sunflower-decoration sunflower-top-left">
+            <img src="assets/sunflowers/sunflower_3.png" alt="">
+        </div>
+        <div class="sunflower-decoration sunflower-bottom-right">
+            <img src="assets/sunflowers/sunflower_3.png" alt="">
+        </div>
+
+        <h2 class="section-title">Aquele Vídeo</h2>
+        <p>Cada dia que você filmou sua mão... você estava esperando por mim, e eu estava esperando por você. O final desse vídeo é o começo do verdadeiro tudo entre nós.</p>
+        
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video controls poster="assets/video/Opedido.mp4">
+                    <source src="assets/video/Opedido.mp4" type="video/mp4">
+                    <p>Seu navegador não suporta vídeo HTML5. (Adicione sua tag <source> aqui!)</p>
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="simbolo-chama-section" id="simbolo-chama">
+        <div class="simbolo-chama-grid">
+            <div class="simbolo-card">
+                <h3>O Símbolo do Nosso 'Sim'</h3>
+                <div class="simbolo-images">
+                    <img src="assets/photos/NossasAlianças.jpeg" alt="Símbolo 1">
+                    <img src="assets/photos/NossasAlianças2.jpeg" alt="Símbolo 2">
+                </div>
+            </div>
+            <div class="chama-card">
+                <h3>Nossa Chama</h3>
+                <p>Nossa "Fontinellinha labubu" ❤️‍🔥</p>
+                <img src="assets/photos/NossaFilhinhaDoFoguinhoDoTikTok.jpeg" alt="Widget Labubu">
+                <p style="margin-top: 15px; font-size: 0.9rem;">Cuidando um do outro, todos os dias.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Nossa Galeria</h2>
+        <div class="gallery-grid" id="gallery-grid">
+            </div>
+    </section>
+
+    <section classs="final-message-section" id="final-message">
+        <div class="message-box">
+            <div class="message-icon">♡</div>
+            <p>Meu amor, minha vida. Você é a mulher mais forte, carinhosa e maravilhosa que eu já conheci. Na saúde e na doença, na alegria e na tristeza, eu não vou apenas estar aqui, eu vou <strong>lutar</strong> com você e por você, pelo mais eterno sempre.</p>
+            <p class="emphasis">Eu te amo mais do que as palavras podem dizer.</p>
+            <div class="emphasis"><h2>Com todo o meu coração,</h2></div>
+            <div class="message-signature">Fontenelle</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Feito com ❤️ para Sâmy 🌻</p>
+    </footer>
+
+    <div id="letter-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            
+            <h3>Minha carta para você, Sâmy</h3>
+            
+            <p>Meu amor,</p>
+            <p>Se você está lendo isso, é porque aquele primeiro botão te trouxe até aqui. Mas a verdade é que cada dia ao seu lado é como clicar em um botão que me leva para um lugar mais feliz.</p>
+            <p>Eu sei que as coisas não são fáceis. Eu sei que a preocupação existe, e que às vezes o medo tenta ser maior que a esperança. É por isso que eu fiz isso. Eu queria te lembrar, de um jeito que fosse só nosso, de tudo que a gente é.</p>
+            <p>Você é o meu girassol. Mesmo nos dias nublados, você me ensina a procurar a luz. Você é a minha força, a minha inspiração e meu porto seguro.</p>
+            <p>Eu te amo. Não só por me tornar uma pessoa melhor quando está comigo, mas pela menina maravilhosa que você é. Eu te amo pela sua força em dias difíceis e pelo seu sorriso em dias bons.</p>
+            <p>Eu estou aqui. Segurando sua mão, hoje e sempre. Nós vamos passar por qualquer obstáculo, juntos. Você, nós, somos mais fortes do que qualquer coisa que tente nos derrotar.</p>
+            <p>Para sempre seu,</p>
+            
+            <div class="signature">Fonte</div>
+
+            <button class="modal-btn-close" id="modal-btn-fechar">Fechar</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            initGallery();
+            
+            // Inicia os contadores e os atualiza a cada segundo
+            updateCounters();
+            setInterval(updateCounters, 1000);
+
+            // Adiciona funcionalidade ao botão "Motivos"
+            initMotivos();
+
+            // Adiciona animação de fade-in aos elementos ao rolar
+            initScrollAnimations();
+
+            // (NOVO) Inicializa o Modal da Carta
+            initLetterModal();
+        });
+
+        // --- 1. Galeria ---
+        function initGallery() {
+            const galleryGrid = document.getElementById('gallery-grid');
+            if (!galleryGrid) return;
+
+            // NOTA: Substitua estes placeholders pelos seus arquivos de fotos
+            // Ex: 'assets/photos/MeuAmor1.jpeg'
+            const photos = [
+                'assets/photos/MeuAmor1.jpeg',
+                'assets/photos/MeuAmor2.jpeg',
+                'assets/photos/MeuAmor3.jpeg',
+                'assets/photos/MeuAmor4.jpeg',
+                'assets/photos/MeuAmor6.jpeg',
+                'assets/photos/MeuAmor7.jpeg',
+            ];
+
+            // Limpa a galeria antes de adicionar
+            galleryGrid.innerHTML = '';
+
+            photos.forEach(photoSrc => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                // NOTA: Se estiver usando seus caminhos locais, mude 'src' para o 'photoSrc'
+                item.innerHTML = `<img src="${photoSrc}" alt="Momento Nosso">`;
+                galleryGrid.appendChild(item);
+            });
+        }
+
+        // --- 2. Contadores ---
+        function updateCounters() {
+            // Datas (Ano, Mês (0-11), Dia)
+            const startDate1 = new Date(2025, 5, 14); // 14 de Junho de 2025 (Mês 5 é Junho)
+            const startDate2 = new Date(2025, 7, 16); // 16 de Agosto de 2025 (Mês 7 é Agosto)
+            
+            updateTimerDisplay('timer1', startDate1);
+            updateTimerDisplay('timer2', startDate2);
+        }
+
+        function updateTimerDisplay(timerId, startDate) {
+            const timerElement = document.getElementById(timerId);
+            if (!timerElement) return;
+
+            const now = new Date();
+            let difference = now - startDate;
+
+            // Se a data for no futuro, a diferença será negativa.
+            // Podemos mostrar 0 ou uma mensagem. Por ora, mostrará 0.
+            if (difference < 0) difference = 0;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Atualiza os valores na tela
+            timerElement.querySelector('[data-unit="days"]').textContent = days;
+            timerElement.querySelector('[data-unit="hours"]').textContent = hours;
+            timerElement.querySelector('[data-unit="mins"]').textContent = minutes;
+            timerElement.querySelector('[data-unit="secs"]').textContent = seconds;
+        }
+
+        // --- 3. Seção Motivos ---
+        function initMotivos() {
+            const motivos = [
+                "Porque você fez aquele vídeo das suas mãos, e profetizou nosso futuro.",
+                "Pelo nosso 'foguinho labubu' que nunca se apaga. ❤️‍🔥",
+                "Porque você é a garota mais forte e maravilhosa que eu conheço.",
+                "Pelo seu sorriso, que ilumina o meu dia inteiro.",
+                "Porque você cuida de mim como ninguém.",
+                "Por cada risada e cada momento de bobeira que temos.",
+                "Porque você me ensina a ser uma pessoa melhor todos os dias.",
+                "Porque você foi e é a primeira pessoa a me amar, aceitando minhas individualidades e quem eu sou."
+            ];
+            let currentMotivoIndex = -1;
+
+            const button = document.getElementById('motivo-button');
+            const textContainer = document.getElementById('motivo-text-container');
+
+            if (button && textContainer) {
+                button.onclick = () => {
+                    // Pega um índice aleatório diferente do atual
+                    let newIndex = currentMotivoIndex;
+                    while (newIndex === currentMotivoIndex) {
+                        newIndex = Math.floor(Math.random() * motivos.length);
+                    }
+                    currentMotivoIndex = newIndex;
+
+                    // Adiciona animação de fade-out, troca o texto, e fade-in
+                    textContainer.style.opacity = '0';
+                    setTimeout(() => {
+                        textContainer.innerHTML = `${motivos[currentMotivoIndex]}`;
+                        textContainer.style.opacity = '1';
+                    }, 300); // Tempo para o fade-out
+                };
+                
+                // Estiliza a transição de opacidade
+                textContainer.style.transition = 'opacity 0.3s ease-in-out';
+            }
+        }
+
+        // --- 4. Animação de Scroll ---
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up-active');
+                        observer.unobserve(entry.target); // Para animar apenas uma vez
+                    }
+                });
+            }, {
+                threshold: 0.1 // Ativa quando 10% do item está visível
+            });
+
+            // Seleciona os elementos para animar
+            const elementsToAnimate = document.querySelectorAll('.counter-card, .motivos-card, .video-container, .simbolo-card, .chama-card, .gallery-item, .message-box');
+            
+            elementsToAnimate.forEach(el => {
+                el.classList.add('fade-in-up-start'); // Estado inicial
+                observer.observe(el);
+            });
+
+            // Adiciona os estilos CSS para a animação
+            const styleSheet = document.createElement("style");
+            styleSheet.type = "text/css";
+            styleSheet.innerText = `
+                .fade-in-up-start {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+                }
+                .fade-in-up-active {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            `;
+            document.head.appendChild(styleSheet);
+        }
+
+        // --- 5. (NOVO) JAVASCRIPT DO MODAL (GOAL 3) ---
+        function initLetterModal() {
+            const modal = document.getElementById('letter-modal');
+            const openBtn = document.getElementById('open-letter-btn');
+            const closeBtn = modal.querySelector('.close-btn');
+            const fecharBtn = document.getElementById('modal-btn-fechar');
+
+            if (!modal || !openBtn || !closeBtn || !fecharBtn) {
+                console.error("Elementos do modal não encontrados!");
+                return;
+            }
+
+            const openModal = () => {
+                modal.style.display = 'flex';
+                // Força o navegador a reconhecer o display:flex antes de animar a opacidade
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                }, 10); 
+            };
+
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                // Espera a animação de fade-out terminar antes de esconder
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300); // 300ms = 0.3s (duração da transição)
+            };
+
+            openBtn.onclick = openModal;
+            closeBtn.onclick = closeModal;
+            fecharBtn.onclick = closeModal;
+
+            // Fecha o modal se clicar fora da caixa de conteúdo
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            };
+        }
+
+    </script>
+</body>
+</html>
