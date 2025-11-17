@@ -1,2 +1,2 @@
 
-https://namoradodasamily.github.io/SiteParaMinhaNamorada/index.html
+https://namoradodasamily.github.io/ParaSamy/SiteParaMinhaNamorada/index.html
